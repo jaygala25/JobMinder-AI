@@ -22,6 +22,8 @@
 
 **JobMinder AI** is architected using the Akka toolkit, leveraging the actor model to build a concurrent, distributed, and resilient application. This design ensures efficient job monitoring, AI-powered job matching, and real-time notifications while maintaining high performance and fault tolerance.
 
+<img width="1022" height="747" alt="Screenshot 2025-08-15 at 5 45 24 PM" src="https://github.com/user-attachments/assets/3451a4da-4bf8-4663-a831-a9bf0f70f636" />
+
 ### 🎭 Actor System Design
 
 The system follows the Actor Model pattern, where each component is an independent actor that communicates through message passing. This design provides:

@@ -1,0 +1,1332 @@
+2025-08-09 19:00:31.668 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:00:31.953 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:00:32.175 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:00:32.203 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:00:32.210 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:00:32.210 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:00:32.210 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:00:32.210 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:00:32.211 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:01:02.263 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:01:02.265 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:01:02.265 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:01:02.265 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:01:02.265 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:01:02.304 [job-monitor-system-akka.actor.default-dispatcher-8] ERROR c.jobmonitor.service.DatabaseService - Error getting job data for company Company2: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1788)
+	at org.h2.command.Parser.readTableReference(Parser.java:2268)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2718)
+	at org.h2.command.Parser.parseSelect(Parser.java:2824)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2708)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2564)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2543)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2536)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2529)
+	at org.h2.command.Parser.parseQuery(Parser.java:2498)
+	at org.h2.command.Parser.parsePrepared(Parser.java:627)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at com.jobmonitor.service.DatabaseService.getJobData(DatabaseService.java:67)
+	at com.jobmonitor.actor.DatabaseActor.onGetJobData(DatabaseActor.java:51)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:01:02.325 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:01:02.326 [job-monitor-system-akka.actor.default-dispatcher-8] ERROR c.jobmonitor.service.DatabaseService - Error getting job data for company Company4: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1788)
+	at org.h2.command.Parser.readTableReference(Parser.java:2268)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2718)
+	at org.h2.command.Parser.parseSelect(Parser.java:2824)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2708)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2564)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2543)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2536)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2529)
+	at org.h2.command.Parser.parseQuery(Parser.java:2498)
+	at org.h2.command.Parser.parsePrepared(Parser.java:627)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at com.jobmonitor.service.DatabaseService.getJobData(DatabaseService.java:67)
+	at com.jobmonitor.actor.DatabaseActor.onGetJobData(DatabaseActor.java:51)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:01:02.327 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:01:02.328 [job-monitor-system-akka.actor.default-dispatcher-8] ERROR c.jobmonitor.service.DatabaseService - Error getting job data for company Company5: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1788)
+	at org.h2.command.Parser.readTableReference(Parser.java:2268)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2718)
+	at org.h2.command.Parser.parseSelect(Parser.java:2824)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2708)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2564)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2543)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2536)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2529)
+	at org.h2.command.Parser.parseQuery(Parser.java:2498)
+	at org.h2.command.Parser.parsePrepared(Parser.java:627)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at com.jobmonitor.service.DatabaseService.getJobData(DatabaseService.java:67)
+	at com.jobmonitor.actor.DatabaseActor.onGetJobData(DatabaseActor.java:51)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:01:02.330 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:01:02.332 [job-monitor-system-akka.actor.default-dispatcher-8] ERROR c.jobmonitor.service.DatabaseService - Error getting job data for company Company3: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1788)
+	at org.h2.command.Parser.readTableReference(Parser.java:2268)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2718)
+	at org.h2.command.Parser.parseSelect(Parser.java:2824)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2708)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2564)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2543)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2536)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2529)
+	at org.h2.command.Parser.parseQuery(Parser.java:2498)
+	at org.h2.command.Parser.parsePrepared(Parser.java:627)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at com.jobmonitor.service.DatabaseService.getJobData(DatabaseService.java:67)
+	at com.jobmonitor.actor.DatabaseActor.onGetJobData(DatabaseActor.java:51)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:01:02.336 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:01:02.337 [job-monitor-system-akka.actor.default-dispatcher-8] ERROR c.jobmonitor.service.DatabaseService - Error getting job data for company Kikoff: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "JOB_DATA" not found (this database is empty); SQL statement:
+SELECT id, company_name, job_data, created_at, updated_at FROM job_data WHERE company_name = ? [42104-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8051)
+	at org.h2.command.Parser.getTableOrViewNotFoundDbException(Parser.java:8035)
+	at org.h2.command.Parser.readTableOrView(Parser.java:8024)
+	at org.h2.command.Parser.readTablePrimary(Parser.java:1788)
+	at org.h2.command.Parser.readTableReference(Parser.java:2268)
+	at org.h2.command.Parser.parseSelectFromPart(Parser.java:2718)
+	at org.h2.command.Parser.parseSelect(Parser.java:2824)
+	at org.h2.command.Parser.parseQueryPrimary(Parser.java:2708)
+	at org.h2.command.Parser.parseQueryTerm(Parser.java:2564)
+	at org.h2.command.Parser.parseQueryExpressionBody(Parser.java:2543)
+	at org.h2.command.Parser.parseQueryExpressionBodyAndEndOfQuery(Parser.java:2536)
+	at org.h2.command.Parser.parseQueryExpression(Parser.java:2529)
+	at org.h2.command.Parser.parseQuery(Parser.java:2498)
+	at org.h2.command.Parser.parsePrepared(Parser.java:627)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:316)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:327)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at com.jobmonitor.service.DatabaseService.getJobData(DatabaseService.java:67)
+	at com.jobmonitor.actor.DatabaseActor.onGetJobData(DatabaseActor.java:51)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:01:02.338 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:03:07.604 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:03:07.734 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:03:07.986 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:03:08.250 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:03:08.282 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:03:08.292 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:03:08.293 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:03:08.293 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:03:08.293 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:03:08.294 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:03:38.338 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:03:38.340 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:03:38.340 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:03:38.341 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:03:38.341 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:03:38.368 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:03:38.369 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:03:38.369 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:03:38.370 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:03:38.371 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:07:23.942 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:07:24.074 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:07:24.275 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:07:24.524 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:07:24.553 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:07:24.562 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:07:24.563 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:07:24.563 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:07:24.563 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:07:24.563 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:07:54.631 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:07:54.632 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:07:54.632 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:07:54.632 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:07:54.633 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:07:54.655 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:07:54.655 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:07:54.655 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:07:54.655 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:07:54.656 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:08:40.517 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:08:40.652 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:08:40.855 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:08:41.129 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:08:41.159 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:08:41.168 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:08:41.168 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:08:41.168 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:08:41.168 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:08:41.168 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:09:11.231 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:09:11.242 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$PollJobs] to Actor[akka://job-monitor-system/user/job-poller-actor#-2063291658] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:09:11.243 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$PollJobs] to Actor[akka://job-monitor-system/user/job-poller-actor#-2063291658] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:09:11.243 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$PollJobs] to Actor[akka://job-monitor-system/user/job-poller-actor#-2063291658] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:09:11.244 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$PollJobs] to Actor[akka://job-monitor-system/user/job-poller-actor#-2063291658] was unhandled. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:09:11.268 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:09:54.879 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:09:55.011 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:09:55.329 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:09:55.570 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:09:55.602 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:09:55.615 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:09:55.615 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:09:55.615 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:09:55.615 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:09:55.616 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:10:25.652 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:10:25.653 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:10:25.654 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:10:25.654 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:10:25.655 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:10:25.678 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:10:25.679 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:10:25.679 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:10:25.680 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:10:25.680 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:11:31.995 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:11:32.116 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:11:32.306 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:11:32.526 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:11:32.561 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:11:32.568 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:11:32.568 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:11:32.569 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:11:32.569 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:11:32.569 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:12:02.630 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:12:02.632 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:12:02.632 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:12:02.632 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:12:02.632 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:12:02.676 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:12:02.676 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:12:02.679 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:12:02.681 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:12:02.683 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:12:02.683 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:12:02.684 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:12:02.685 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:12:03.508 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:12:03.509 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:12:03.539 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR com.jobmonitor.actor.JobPollerActor - Error processing jobs for company Kikoff: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308)
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318)
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:82)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:12:03.541 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:12:03.541 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:12:03.541 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:12:04.027 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:12:04.027 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:12:04.030 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR com.jobmonitor.actor.JobPollerActor - Error processing jobs for company Kikoff: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308)
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318)
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:82)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:12:04.030 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:12:04.031 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:12:04.031 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:12:04.439 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:12:04.439 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:12:04.443 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR com.jobmonitor.actor.JobPollerActor - Error processing jobs for company Kikoff: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308)
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318)
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:82)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:12:04.446 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:12:04.446 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:12:04.446 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:12:04.838 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:12:04.838 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:12:04.840 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR com.jobmonitor.actor.JobPollerActor - Error processing jobs for company Kikoff: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308)
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318)
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:82)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:12:04.841 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:12:04.841 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:12:04.842 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:12:05.114 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:12:05.115 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:12:05.118 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR com.jobmonitor.actor.JobPollerActor - Error processing jobs for company Kikoff: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling (through reference chain: java.util.ArrayList[0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308)
+	at com.fasterxml.jackson.databind.ser.impl.UnsupportedTypeSerializer.serialize(UnsupportedTypeSerializer.java:35)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318)
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:82)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:12:30.271 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:12:30.387 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:12:30.582 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:12:30.793 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:12:30.823 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:12:30.831 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:12:30.832 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:12:30.832 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:12:30.832 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:12:30.832 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:13:00.878 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:13:00.880 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:13:00.881 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:13:00.881 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:13:00.881 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:13:00.908 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:13:00.908 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company3
+2025-08-09 19:13:00.909 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:13:00.911 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company3
+2025-08-09 19:13:00.911 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:13:00.912 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company3
+2025-08-09 19:13:00.912 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:13:00.914 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:13:01.405 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:13:01.405 [job-monitor-system-akka.actor.default-dispatcher-12] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company3
+2025-08-09 19:13:01.406 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company3
+2025-08-09 19:13:01.406 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company3
+2025-08-09 19:13:01.406 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company3
+2025-08-09 19:13:01.473 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:13:01.473 [job-monitor-system-akka.actor.default-dispatcher-12] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company3
+2025-08-09 19:13:01.474 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company3
+2025-08-09 19:13:01.474 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company3
+2025-08-09 19:13:01.474 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company3
+2025-08-09 19:13:01.564 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:13:01.565 [job-monitor-system-akka.actor.default-dispatcher-12] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company3
+2025-08-09 19:13:01.566 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company3
+2025-08-09 19:13:01.566 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company3
+2025-08-09 19:13:01.566 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company3
+2025-08-09 19:13:01.707 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:13:01.707 [job-monitor-system-akka.actor.default-dispatcher-12] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company3
+2025-08-09 19:13:01.708 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company3
+2025-08-09 19:13:01.708 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company3
+2025-08-09 19:13:01.708 [job-monitor-system-akka.actor.default-dispatcher-12] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company3
+2025-08-09 19:13:01.814 [job-monitor-system-akka.actor.default-dispatcher-12] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:13:01.815 [job-monitor-system-akka.actor.default-dispatcher-12] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company3
+2025-08-09 19:15:05.426 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - H2 driver loaded successfully
+2025-08-09 19:15:05.600 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:15:05.823 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:15:06.107 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:15:06.144 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:15:06.157 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:15:06.159 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company2 with interval: PT15M
+2025-08-09 19:15:06.160 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company3 with interval: PT15M
+2025-08-09 19:15:06.160 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company4 with interval: PT15M
+2025-08-09 19:15:06.161 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Company5 with interval: PT15M
+2025-08-09 19:15:36.223 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:15:36.226 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company5
+2025-08-09 19:15:36.227 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company4
+2025-08-09 19:15:36.227 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company3
+2025-08-09 19:15:36.227 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Company2
+2025-08-09 19:15:36.252 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company2
+2025-08-09 19:15:36.252 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:15:36.254 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company5 - Present: false
+2025-08-09 19:15:36.254 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company4 - Present: false
+2025-08-09 19:15:36.255 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company3 - Present: false
+2025-08-09 19:15:36.255 [job-monitor-system-akka.actor.default-dispatcher-11] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Company2 - Present: false
+2025-08-09 19:15:36.255 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company2
+2025-08-09 19:15:36.256 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company2
+2025-08-09 19:15:36.647 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:15:36.648 [job-monitor-system-akka.actor.default-dispatcher-6] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company2
+2025-08-09 19:15:36.648 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company2
+2025-08-09 19:15:36.648 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company2
+2025-08-09 19:15:36.648 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company2
+2025-08-09 19:15:36.724 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:15:36.725 [job-monitor-system-akka.actor.default-dispatcher-6] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company2
+2025-08-09 19:15:36.725 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company2
+2025-08-09 19:15:36.725 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company2
+2025-08-09 19:15:36.725 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company2
+2025-08-09 19:15:36.814 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:15:36.815 [job-monitor-system-akka.actor.default-dispatcher-6] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company2
+2025-08-09 19:15:36.815 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company2
+2025-08-09 19:15:36.816 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company2
+2025-08-09 19:15:36.816 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company2
+2025-08-09 19:15:36.870 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:15:36.871 [job-monitor-system-akka.actor.default-dispatcher-6] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company2
+2025-08-09 19:15:36.871 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Company2
+2025-08-09 19:15:36.872 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Company2
+2025-08-09 19:15:36.872 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/company2
+2025-08-09 19:15:36.925 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.AshbyApiService - ❌ Failed to poll jobs. HTTP 404: 
+2025-08-09 19:15:36.926 [job-monitor-system-akka.actor.default-dispatcher-6] WARN  com.jobmonitor.actor.JobPollerActor - No jobs found for company: Company2
+2025-08-09 19:20:53.447 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 19:20:53.587 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:20:53.813 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:20:54.088 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:20:54.124 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:20:54.136 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:21:24.178 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:21:24.213 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:21:24.213 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 19:21:24.221 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:21:24.222 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:21:24.895 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:21:24.895 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:21:24.912 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Saving 28 jobs to database for company: Kikoff
+2025-08-09 19:21:24.912 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 new jobs for company Kikoff
+2025-08-09 19:21:24.914 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 19:21:24.914 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:21:24.914 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:21:25.029 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data saved for company: Kikoff - Success: true
+2025-08-09 19:21:25.033 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataSaved] to Actor[akka://job-monitor-system/user/job-poller-actor#-1368867573] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:21:29.312 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 19:21:39.033 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 75.0)
+2025-08-09 19:21:46.797 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 90.0)
+2025-08-09 19:21:48.506 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 80.0)
+2025-08-09 19:21:50.522 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 19:22:02.196 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Machine Learning (Score: 80.0)
+2025-08-09 19:22:20.966 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Found 6 matching jobs out of 28 analyzed
+2025-08-09 19:22:20.970 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 6 matches out of 28 jobs
+2025-08-09 19:22:20.972 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$JobMatchResults] to Actor[akka://job-monitor-system/user] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:25:21.853 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 19:25:22.919 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:25:23.241 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:25:23.496 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:25:23.523 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:25:23.533 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with interval: PT15M
+2025-08-09 19:25:23.534 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 19:25:53.569 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:25:53.639 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:25:53.639 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 19:25:53.640 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:25:53.641 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:25:54.568 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:25:54.568 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:25:54.585 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Saving 28 jobs to database for company: Kikoff
+2025-08-09 19:25:54.591 [job-monitor-system-akka.actor.default-dispatcher-3] ERROR com.jobmonitor.actor.JobPollerActor - Error parsing existing job data: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1915)
+	at com.fasterxml.jackson.databind.deser.impl.UnsupportedTypeDeserializer.deserialize(UnsupportedTypeDeserializer.java:48)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:314)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:216)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:26)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3772)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3740)
+	at com.jobmonitor.actor.JobPollerActor.findNewJobs(JobPollerActor.java:115)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:91)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:25:54.593 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 new jobs for company Kikoff
+2025-08-09 19:25:54.593 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 19:25:54.594 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:25:54.594 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:25:54.659 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data saved for company: Kikoff - Success: true
+2025-08-09 19:25:54.664 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataSaved] to Actor[akka://job-monitor-system/user/job-poller-actor#642650047] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:25:59.108 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 19:25:59.329 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.MistralService - Error analyzing job Senior Software Engineer - AI : Unexpected response code: 429 - 
+java.io.IOException: Unexpected response code: 429 - 
+	at com.jobmonitor.service.MistralService.callMistralAPI(MistralService.java:146)
+	at com.jobmonitor.service.MistralService.analyzeSingleJob(MistralService.java:75)
+	at com.jobmonitor.service.MistralService.analyzeJobMatches(MistralService.java:57)
+	at com.jobmonitor.actor.LLMAnalyzerActor.onAnalyzeJobMatches(LLMAnalyzerActor.java:42)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:26:06.963 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 80.0)
+2025-08-09 19:26:14.096 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 80.0)
+2025-08-09 19:26:16.792 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 75.0)
+2025-08-09 19:26:18.842 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 19:26:35.224 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Machine Learning (Score: 80.0)
+2025-08-09 19:26:59.726 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Found 6 matching jobs out of 28 analyzed
+2025-08-09 19:26:59.734 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 6 matches out of 28 jobs
+2025-08-09 19:26:59.734 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.actor.JobProcessorActor - Received 6 job match results from LLM
+2025-08-09 19:26:59.748 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Backend with score: 90.0
+2025-08-09 19:27:00.295 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:27:00.295 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Backend
+2025-08-09 19:27:00.295 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Backend with score: 80.0
+2025-08-09 19:27:00.296 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:27:00.408 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:27:00.408 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Backend
+2025-08-09 19:27:00.408 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Recent Grad 2026 with score: 80.0
+2025-08-09 19:27:00.409 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:27:00.528 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:27:00.528 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Recent Grad 2026
+2025-08-09 19:27:00.529 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:27:00.529 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Frontend with score: 75.0
+2025-08-09 19:27:00.688 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:27:00.689 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Frontend
+2025-08-09 19:27:00.689 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Full Stack with score: 90.0
+2025-08-09 19:27:00.694 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [5] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:27:00.807 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:27:00.807 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Full Stack
+2025-08-09 19:27:00.807 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Machine Learning with score: 80.0
+2025-08-09 19:27:00.807 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [6] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:27:00.913 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:27:00.913 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Machine Learning
+2025-08-09 19:27:00.913 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [7] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:39:51.118 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 19:39:51.340 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:39:51.586 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:39:51.835 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:39:51.865 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:39:51.875 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 19:39:51.876 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 19:40:21.912 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 19:40:21.914 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:40:22.093 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 19:40:22.093 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:40:22.094 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:40:22.095 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:40:23.096 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:40:23.096 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:40:23.114 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Saving 28 jobs to database for company: Kikoff
+2025-08-09 19:40:23.119 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR com.jobmonitor.actor.JobPollerActor - Error parsing existing job data: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1915)
+	at com.fasterxml.jackson.databind.deser.impl.UnsupportedTypeDeserializer.deserialize(UnsupportedTypeDeserializer.java:48)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:314)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:216)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:26)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3772)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3740)
+	at com.jobmonitor.actor.JobPollerActor.findNewJobs(JobPollerActor.java:115)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:91)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:40:23.121 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 new jobs for company Kikoff
+2025-08-09 19:40:23.121 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 19:40:23.122 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:40:23.122 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:40:23.193 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data saved for company: Kikoff - Success: true
+2025-08-09 19:40:23.197 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataSaved] to Actor[akka://job-monitor-system/user/job-poller-actor#-1573335211] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:40:27.127 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 19:40:29.343 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - AI  (Score: 75.0)
+2025-08-09 19:40:31.487 [job-monitor-system-akka.actor.default-dispatcher-3] ERROR c.jobmonitor.service.MistralService - Error analyzing job Software Engineer - Mobile: Unexpected response code: 429 - 
+java.io.IOException: Unexpected response code: 429 - 
+	at com.jobmonitor.service.MistralService.callMistralAPI(MistralService.java:146)
+	at com.jobmonitor.service.MistralService.analyzeSingleJob(MistralService.java:75)
+	at com.jobmonitor.service.MistralService.analyzeJobMatches(MistralService.java:57)
+	at com.jobmonitor.actor.LLMAnalyzerActor.onAnalyzeJobMatches(LLMAnalyzerActor.java:42)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:40:36.126 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 75.0)
+2025-08-09 19:40:44.400 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 90.0)
+2025-08-09 19:40:47.606 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 75.0)
+2025-08-09 19:40:52.521 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 19:41:23.037 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Found 6 matching jobs out of 28 analyzed
+2025-08-09 19:41:23.042 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 6 matches out of 28 jobs
+2025-08-09 19:41:23.042 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  c.jobmonitor.actor.JobProcessorActor - Received 6 job match results from LLM
+2025-08-09 19:41:23.051 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Backend with score: 90.0
+2025-08-09 19:41:23.528 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:41:23.528 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Backend
+2025-08-09 19:41:23.528 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - AI  with score: 75.0
+2025-08-09 19:41:23.529 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:41:23.652 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:41:23.653 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - AI 
+2025-08-09 19:41:23.653 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Backend with score: 75.0
+2025-08-09 19:41:23.653 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:41:23.798 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:41:23.799 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Backend
+2025-08-09 19:41:23.799 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Recent Grad 2026 with score: 90.0
+2025-08-09 19:41:23.799 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:41:23.931 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:41:23.931 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Recent Grad 2026
+2025-08-09 19:41:23.931 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Frontend with score: 75.0
+2025-08-09 19:41:23.932 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [5] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:41:24.054 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:41:24.055 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Frontend
+2025-08-09 19:41:24.059 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Full Stack with score: 90.0
+2025-08-09 19:41:24.061 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [6] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:41:24.168 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:41:24.168 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Full Stack
+2025-08-09 19:41:24.168 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [7] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:46:55.020 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 19:46:55.216 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:46:55.444 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:46:55.702 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:46:55.733 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:46:55.746 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 19:46:55.746 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 19:47:25.776 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 19:47:25.778 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:47:25.860 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 19:47:25.860 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:47:25.862 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:47:25.863 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:47:26.737 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:47:26.738 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:47:26.762 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Saving 28 jobs to database for company: Kikoff
+2025-08-09 19:47:26.772 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR com.jobmonitor.actor.JobPollerActor - Error parsing existing job data: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1915)
+	at com.fasterxml.jackson.databind.deser.impl.UnsupportedTypeDeserializer.deserialize(UnsupportedTypeDeserializer.java:48)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:314)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:216)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:26)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3772)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3740)
+	at com.jobmonitor.actor.JobPollerActor.findNewJobs(JobPollerActor.java:115)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:91)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:47:26.774 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 new jobs for company Kikoff
+2025-08-09 19:47:26.775 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 19:47:26.777 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:47:26.778 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:47:27.053 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data saved for company: Kikoff - Success: true
+2025-08-09 19:47:27.167 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataSaved] to Actor[akka://job-monitor-system/user/job-poller-actor#-1439639551] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:47:31.309 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 19:47:33.114 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - AI  (Score: 75.0)
+2025-08-09 19:47:39.976 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 80.0)
+2025-08-09 19:47:47.550 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 80.0)
+2025-08-09 19:47:49.985 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 75.0)
+2025-08-09 19:47:52.065 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 19:47:55.738 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 19:47:55.796 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 19:48:05.762 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Machine Learning (Score: 80.0)
+2025-08-09 19:48:05.844 [job-monitor-system-akka.actor.default-dispatcher-5] WARN  akka.actor.CoordinatedShutdown - Coordinated shutdown phase [actor-system-terminate] timed out after 10000 milliseconds
+2025-08-09 19:48:24.222 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.MistralService - Found 7 matching jobs out of 28 analyzed
+2025-08-09 19:48:24.239 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 7 matches out of 28 jobs
+2025-08-09 19:48:24.243 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$JobMatchResults] to Actor[akka://job-monitor-system/user/job-processor-actor#1547199740] was not delivered. [2] dead letters encountered. If this is not an expected behavior then Actor[akka://job-monitor-system/user/job-processor-actor#1547199740] may have terminated unexpectedly. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:48:24.288 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 19:48:24.288 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 19:48:24.288 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 19:48:24.290 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 19:48:24.316 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed
+2025-08-09 19:49:53.356 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 19:49:53.568 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 19:49:53.788 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 19:49:54.034 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 19:49:54.065 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 19:49:54.074 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 19:49:54.075 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 19:50:24.105 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 19:50:24.113 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 19:50:24.194 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 19:50:24.194 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 19:50:24.195 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 19:50:24.195 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 19:50:25.042 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 19:50:25.042 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 19:50:25.059 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Saving 28 jobs to database for company: Kikoff
+2025-08-09 19:50:25.064 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR com.jobmonitor.actor.JobPollerActor - Error parsing existing job data: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Java 8 date/time type `java.time.OffsetDateTime` not supported by default: add Module "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" to enable handling
+ at [Source: (StringReader); line: 1, column: 594] (through reference chain: java.lang.Object[][0]->com.jobmonitor.model.Job["publishedAt"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1915)
+	at com.fasterxml.jackson.databind.deser.impl.UnsupportedTypeDeserializer.deserialize(UnsupportedTypeDeserializer.java:48)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:314)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:177)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:216)
+	at com.fasterxml.jackson.databind.deser.std.ObjectArrayDeserializer.deserialize(ObjectArrayDeserializer.java:26)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:323)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4825)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3772)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3740)
+	at com.jobmonitor.actor.JobPollerActor.findNewJobs(JobPollerActor.java:115)
+	at com.jobmonitor.actor.JobPollerActor.onJobDataFound(JobPollerActor.java:91)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 19:50:25.065 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 new jobs for company Kikoff
+2025-08-09 19:50:25.066 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 19:50:25.067 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:50:25.067 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 19:50:25.122 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data saved for company: Kikoff - Success: true
+2025-08-09 19:50:25.125 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataSaved] to Actor[akka://job-monitor-system/user/job-poller-actor#1978055681] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:50:29.868 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 19:50:33.543 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - AI  (Score: 75.0)
+2025-08-09 19:50:41.433 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 80.0)
+2025-08-09 19:50:47.092 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Data Engineer (Score: 75.0)
+2025-08-09 19:50:48.495 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 80.0)
+2025-08-09 19:50:51.103 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 75.0)
+2025-08-09 19:50:53.058 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 19:51:03.207 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Machine Learning (Score: 80.0)
+2025-08-09 19:51:22.388 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Found 8 matching jobs out of 28 analyzed
+2025-08-09 19:51:22.391 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 8 matches out of 28 jobs
+2025-08-09 19:51:22.392 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.actor.JobProcessorActor - Received 8 job match results from LLM
+2025-08-09 19:51:22.397 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Backend with score: 90.0
+2025-08-09 19:51:22.848 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:22.849 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Backend
+2025-08-09 19:51:22.849 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - AI  with score: 75.0
+2025-08-09 19:51:22.850 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:22.985 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:22.985 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - AI 
+2025-08-09 19:51:22.985 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Backend with score: 80.0
+2025-08-09 19:51:22.986 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:23.124 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:23.124 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Backend
+2025-08-09 19:51:23.124 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Data Engineer with score: 75.0
+2025-08-09 19:51:23.125 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:23.257 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:23.258 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Data Engineer
+2025-08-09 19:51:23.258 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Recent Grad 2026 with score: 80.0
+2025-08-09 19:51:23.258 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [5] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:23.376 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:23.376 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Recent Grad 2026
+2025-08-09 19:51:23.376 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Frontend with score: 75.0
+2025-08-09 19:51:23.376 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [6] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:23.509 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:23.509 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Frontend
+2025-08-09 19:51:23.509 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Full Stack with score: 90.0
+2025-08-09 19:51:23.509 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [7] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:23.642 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:23.643 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Full Stack
+2025-08-09 19:51:23.643 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Machine Learning with score: 80.0
+2025-08-09 19:51:23.644 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [8] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:51:23.755 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 19:51:23.755 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Machine Learning
+2025-08-09 19:51:23.756 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [9] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 19:52:54.065 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 19:52:54.145 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 19:52:54.169 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 19:52:54.170 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 19:52:54.170 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 19:52:54.171 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 19:52:54.180 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed
+2025-08-09 20:21:42.667 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 20:21:42.785 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 20:21:42.937 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 20:21:43.201 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 20:21:43.231 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 20:21:43.241 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 20:21:43.241 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 20:22:13.308 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 20:22:13.321 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 20:22:13.479 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 20:22:13.479 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 20:22:13.482 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 20:22:13.483 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 20:22:14.348 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 20:22:14.348 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 20:22:14.348 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - No existing job data found, treating all 28 jobs as new
+2025-08-09 20:22:14.348 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 new jobs for company Kikoff
+2025-08-09 20:22:14.348 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Updating database with current job data for company: Kikoff
+2025-08-09 20:22:14.348 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 20:22:14.349 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 20:22:14.349 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 20:22:14.349 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 20:22:14.484 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.service.DatabaseService - Successfully upserted 28 jobs for company: Kikoff
+2025-08-09 20:22:14.485 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data upserted for company: Kikoff - Success: true
+2025-08-09 20:22:14.489 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataUpserted] to Actor[akka://job-monitor-system/user/job-poller-actor#-1018894833] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:22:18.646 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 20:22:21.083 [job-monitor-system-akka.actor.default-dispatcher-6] ERROR c.jobmonitor.service.MistralService - Error analyzing job Card Operations Manager: Unexpected response code: 429 - 
+java.io.IOException: Unexpected response code: 429 - 
+	at com.jobmonitor.service.MistralService.callMistralAPI(MistralService.java:146)
+	at com.jobmonitor.service.MistralService.analyzeSingleJob(MistralService.java:75)
+	at com.jobmonitor.service.MistralService.analyzeJobMatches(MistralService.java:57)
+	at com.jobmonitor.actor.LLMAnalyzerActor.onAnalyzeJobMatches(LLMAnalyzerActor.java:42)
+	at akka.actor.typed.javadsl.BuiltReceive.receive(ReceiveBuilder.scala:211)
+	at akka.actor.typed.javadsl.BuiltReceive.receiveMessage(ReceiveBuilder.scala:200)
+	at akka.actor.typed.javadsl.Receive.receive(Receive.scala:53)
+	at akka.actor.typed.javadsl.AbstractBehavior.receive(AbstractBehavior.scala:64)
+	at akka.actor.typed.Behavior$.interpret(Behavior.scala:282)
+	at akka.actor.typed.Behavior$.interpretMessage(Behavior.scala:238)
+	at akka.actor.typed.internal.adapter.ActorAdapter.handleMessage(ActorAdapter.scala:133)
+	at akka.actor.typed.internal.adapter.ActorAdapter.aroundReceive(ActorAdapter.scala:109)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:579)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:547)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:270)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:231)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1460)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2036)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:189)
+2025-08-09 20:22:27.144 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 75.0)
+2025-08-09 20:22:33.771 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 80.0)
+2025-08-09 20:22:36.046 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 80.0)
+2025-08-09 20:22:38.227 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 20:22:51.823 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Machine Learning (Score: 80.0)
+2025-08-09 20:23:13.021 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Found 6 matching jobs out of 28 analyzed
+2025-08-09 20:23:13.024 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 6 matches out of 28 jobs
+2025-08-09 20:23:13.025 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.actor.JobProcessorActor - Received 6 job match results from LLM
+2025-08-09 20:23:13.030 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Backend with score: 90.0
+2025-08-09 20:23:13.498 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:23:13.499 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Backend
+2025-08-09 20:23:13.499 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Backend with score: 75.0
+2025-08-09 20:23:13.500 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:23:13.632 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:23:13.632 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Backend
+2025-08-09 20:23:13.632 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Recent Grad 2026 with score: 80.0
+2025-08-09 20:23:13.633 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:23:13.757 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:23:13.757 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Recent Grad 2026
+2025-08-09 20:23:13.757 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Frontend with score: 80.0
+2025-08-09 20:23:13.758 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:23:13.886 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:23:13.886 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Frontend
+2025-08-09 20:23:13.887 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [5] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:23:13.887 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Full Stack with score: 90.0
+2025-08-09 20:23:14.012 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:23:14.013 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Full Stack
+2025-08-09 20:23:14.013 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Machine Learning with score: 80.0
+2025-08-09 20:23:14.013 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [6] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:23:14.139 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:23:14.139 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Machine Learning
+2025-08-09 20:23:14.139 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [7] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:24:43.232 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 20:24:43.532 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 20:24:43.607 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 20:24:43.608 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 20:24:43.608 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 20:24:43.609 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 20:24:43.626 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed
+2025-08-09 20:24:53.010 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 20:24:53.354 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 20:24:53.641 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 20:24:53.911 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 20:24:53.949 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 20:24:53.958 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 20:24:53.960 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 20:25:23.993 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 20:25:23.996 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 20:25:24.307 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 20:25:24.307 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 20:25:24.308 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 20:25:24.309 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 20:25:26.065 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 20:25:26.065 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 20:25:26.073 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 existing jobs, 0 new jobs
+2025-08-09 20:25:26.074 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 0 new jobs for company Kikoff
+2025-08-09 20:25:26.074 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Updating database with current job data for company: Kikoff
+2025-08-09 20:25:26.079 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - No new jobs to process for company: Kikoff
+2025-08-09 20:25:26.728 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.service.DatabaseService - Successfully upserted 28 jobs for company: Kikoff
+2025-08-09 20:25:26.729 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data upserted for company: Kikoff - Success: true
+2025-08-09 20:25:26.740 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.DatabaseMessages$JobDataUpserted] to Actor[akka://job-monitor-system/user/job-poller-actor#998319120] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:27:53.949 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 20:27:54.018 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 20:27:54.055 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 20:27:54.056 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 20:27:54.056 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 20:27:54.057 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 20:27:54.090 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed
+2025-08-09 20:41:29.949 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 20:41:30.074 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 20:41:30.226 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 20:41:30.486 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 20:41:30.516 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 20:41:30.525 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 20:41:30.526 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 20:42:00.568 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 20:42:00.570 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 20:42:00.618 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: false
+2025-08-09 20:42:00.619 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 20:42:00.619 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 20:42:00.619 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 20:42:01.718 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 20:42:01.718 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 20:42:01.718 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Updating database with current job data for company: Kikoff
+2025-08-09 20:42:01.721 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.DatabaseService - No existing data found, treating all 28 jobs as new for company: Kikoff
+2025-08-09 20:42:01.782 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.DatabaseService - Successfully upserted job data for company: Kikoff with 28 total jobs
+2025-08-09 20:42:01.783 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.DatabaseActor - Job data upserted for company: Kikoff - Success: true, New jobs: 28
+2025-08-09 20:42:01.783 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataUpserted for company: Kikoff - Success: true, New jobs: 28
+2025-08-09 20:42:01.783 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 20:42:01.783 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.JobProcessorActor - Processing 28 new jobs for company: Kikoff
+2025-08-09 20:42:01.784 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Analyzing 28 jobs with Mistral AI
+2025-08-09 20:42:01.784 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Analyzing 28 jobs with Mistral AI
+2025-08-09 20:42:06.433 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Backend (Score: 90.0)
+2025-08-09 20:42:08.547 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - AI  (Score: 75.0)
+2025-08-09 20:42:16.843 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Backend (Score: 75.0)
+2025-08-09 20:42:24.522 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Software Engineer - Recent Grad 2026 (Score: 90.0)
+2025-08-09 20:42:26.982 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Frontend (Score: 75.0)
+2025-08-09 20:42:28.894 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Full Stack (Score: 90.0)
+2025-08-09 20:42:41.066 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Match found for job: Senior Software Engineer - Machine Learning (Score: 80.0)
+2025-08-09 20:42:59.904 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.MistralService - Found 7 matching jobs out of 28 analyzed
+2025-08-09 20:42:59.909 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.actor.LLMAnalyzerActor - Job match analysis completed: found 7 matches out of 28 jobs
+2025-08-09 20:42:59.909 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - Received 7 job match results from LLM
+2025-08-09 20:42:59.918 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Backend with score: 90.0
+2025-08-09 20:43:00.553 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:00.554 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Backend
+2025-08-09 20:43:00.554 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - AI  with score: 75.0
+2025-08-09 20:43:00.560 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:43:00.674 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:00.675 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - AI 
+2025-08-09 20:43:00.675 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Backend with score: 75.0
+2025-08-09 20:43:00.675 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [2] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:43:00.795 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:00.795 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Backend
+2025-08-09 20:43:00.795 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Software Engineer - Recent Grad 2026 with score: 90.0
+2025-08-09 20:43:00.795 [job-monitor-system-akka.actor.default-dispatcher-8] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [3] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:43:00.922 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:00.922 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Software Engineer - Recent Grad 2026
+2025-08-09 20:43:00.922 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Frontend with score: 75.0
+2025-08-09 20:43:00.923 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [4] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:43:01.019 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:01.019 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Frontend
+2025-08-09 20:43:01.020 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Full Stack with score: 90.0
+2025-08-09 20:43:01.020 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [5] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:43:01.149 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:01.149 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Full Stack
+2025-08-09 20:43:01.149 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Sending Slack notification for job match: Senior Software Engineer - Machine Learning with score: 80.0
+2025-08-09 20:43:01.149 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [6] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:43:01.281 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.service.SlackService - Slack message sent successfully
+2025-08-09 20:43:01.281 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.j.actor.SlackNotifierActor - Slack notification sent successfully for job: Senior Software Engineer - Machine Learning
+2025-08-09 20:43:01.281 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  akka.actor.LocalActorRef - Message [com.jobmonitor.message.JobMessages$NotificationSent] to Actor[akka://job-monitor-system/user] was unhandled. [7] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2025-08-09 20:44:30.518 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 20:44:30.658 [job-monitor-system-akka.actor.default-dispatcher-9] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 20:44:30.695 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 20:44:30.695 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 20:44:30.695 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 20:44:30.696 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 20:44:30.733 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed
+2025-08-09 20:44:40.629 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 20:44:40.761 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 20:44:40.929 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 20:44:41.182 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 20:44:41.213 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 20:44:41.223 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.Main - Job polling started for company: Kikoff with initial delay: PT30S
+2025-08-09 20:44:41.223 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 20:45:11.254 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.SchedulerActor - Polling completed for company: Kikoff. Scheduler will stop.
+2025-08-09 20:45:11.259 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 20:45:11.307 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 20:45:11.307 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 20:45:11.307 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 20:45:11.308 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 20:45:12.104 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 20:45:12.104 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 20:45:12.104 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Updating database with current job data for company: Kikoff
+2025-08-09 20:45:12.116 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.service.DatabaseService - Found 28 existing jobs, 0 new jobs
+2025-08-09 20:45:12.116 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.service.DatabaseService - Found 0 new jobs for company: Kikoff
+2025-08-09 20:45:12.199 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  c.jobmonitor.service.DatabaseService - Successfully upserted job data for company: Kikoff with 28 total jobs
+2025-08-09 20:45:12.200 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataUpserted for company: Kikoff - Success: true, New jobs: 0
+2025-08-09 20:45:12.200 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.actor.DatabaseActor - Job data upserted for company: Kikoff - Success: true, New jobs: 0
+2025-08-09 20:45:12.200 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - No new jobs to process for company: Kikoff
+2025-08-09 20:47:41.213 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 20:47:41.290 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 20:47:41.318 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 20:47:41.318 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 20:47:41.318 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 20:47:41.319 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 20:47:41.333 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed
+2025-08-09 20:55:26.619 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - MySQL driver loaded successfully
+2025-08-09 20:55:26.927 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Database schema initialized successfully
+2025-08-09 20:55:26.975 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.DatabaseService - Retrieved 1 companies from database
+2025-08-09 20:55:26.977 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Found 1 companies in database: Kikoff
+2025-08-09 20:55:27.058 [com.jobmonitor.Main.main()] INFO  c.jobmonitor.service.ResumeService - Resume loaded successfully from: resume.txt
+2025-08-09 20:55:27.330 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+2025-08-09 20:55:27.362 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job Monitoring System started
+2025-08-09 20:55:27.370 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Creating JobPollerActor for company: Kikoff (Ashby ID: kikoff)
+2025-08-09 20:55:27.371 [job-monitor-system-akka.actor.default-dispatcher-5] INFO  com.jobmonitor.Main - Polling is disabled. Running once...
+2025-08-09 20:55:27.372 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.actor.JobProcessorActor - LLMAnalyzerActor reference updated
+2025-08-09 20:55:27.372 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.JobPollerActor - Polling jobs for company: Kikoff
+2025-08-09 20:55:27.400 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataFound for company: Kikoff
+2025-08-09 20:55:27.400 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Polling Ashby API for company: Kikoff
+2025-08-09 20:55:27.400 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data found for company: Kikoff - Present: true
+2025-08-09 20:55:27.401 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - 🌐 Polling jobs from: https://api.ashbyhq.com/posting-api/job-board/kikoff
+2025-08-09 20:55:28.212 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  c.jobmonitor.service.AshbyApiService - ✅ Found 28 active jobs for company kikoff
+2025-08-09 20:55:28.212 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Found 28 jobs for company: Kikoff
+2025-08-09 20:55:28.212 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Updating database with current job data for company: Kikoff
+2025-08-09 20:55:28.234 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.DatabaseService - Found 28 existing jobs, 0 new jobs
+2025-08-09 20:55:28.234 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.DatabaseService - Found 0 new jobs for company: Kikoff
+2025-08-09 20:55:28.316 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  c.jobmonitor.service.DatabaseService - Successfully upserted job data for company: Kikoff with 28 total jobs
+2025-08-09 20:55:28.317 [job-monitor-system-akka.actor.default-dispatcher-6] INFO  com.jobmonitor.actor.DatabaseActor - Job data upserted for company: Kikoff - Success: true, New jobs: 0
+2025-08-09 20:55:28.317 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - Received JobDataUpserted for company: Kikoff - Success: true, New jobs: 0
+2025-08-09 20:55:28.317 [job-monitor-system-akka.actor.default-dispatcher-3] INFO  com.jobmonitor.actor.JobPollerActor - No new jobs to process for company: Kikoff
+2025-08-09 20:58:27.362 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Initiating graceful shutdown...
+2025-08-09 20:58:27.492 [job-monitor-system-akka.actor.default-dispatcher-7] INFO  akka.actor.CoordinatedShutdown - Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2025-08-09 20:58:27.537 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - System terminated gracefully
+2025-08-09 20:58:27.537 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Job processing completed. System shutdown complete.
+2025-08-09 20:58:27.537 [com.jobmonitor.Main.main()] INFO  com.jobmonitor.Main - Exiting application...
+2025-08-09 20:58:27.539 [Thread-2] INFO  com.jobmonitor.Main - Shutdown hook triggered, closing database connections...
+2025-08-09 20:58:27.562 [Thread-2] INFO  com.jobmonitor.Main - Database connections closed

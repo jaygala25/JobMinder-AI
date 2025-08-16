@@ -22,8 +22,6 @@
 
 **JobMinder AI** is architected using the Akka toolkit, leveraging the actor model to build a concurrent, distributed, and resilient application. This design ensures efficient job monitoring, AI-powered job matching, and real-time notifications while maintaining high performance and fault tolerance.
 
-<img width="1022" height="747" alt="Screenshot 2025-08-15 at 5 45 24 PM" src="https://github.com/user-attachments/assets/f2dd97c6-9a05-48d8-837d-9a54ea2ccff8" />
-
 ### 🎭 Actor System Design
 
 The system follows the Actor Model pattern, where each component is an independent actor that communicates through message passing. This design provides:
@@ -229,11 +227,11 @@ cd jobminder-ai
 ### 2. Set Up the Database
 
 ```bash
-# Make the setup script executable
-chmod +x setup_mysql_database.sh
+# Create the database and tables using the provided schema script
+mysql -u root -p < create_job_monitor_schema.sql
 
-# Run the database setup (update MySQL root password if needed)
-./setup_mysql_database.sh
+# Or if you have the jobmonitor user already set up:
+mysql -u jobmonitor -pjobmonitor123 < create_job_monitor_schema.sql
 ```
 
 ### 3. Configure the Application
@@ -282,7 +280,7 @@ INSERT INTO job_data (company_name, ashby_name, job_data) VALUES
 ### 6. Run the Application
 
 ```bash
-# Option 1: Using Maven
+# Option 1: Using Maven (Recommended)
 mvn exec:java -Dexec.mainClass="com.jobmonitor.Main"
 
 # Option 2: Using the provided script
@@ -291,7 +289,7 @@ chmod +x run_job_monitor.sh
 
 # Option 3: Build and run JAR
 mvn clean package
-java -jar target/jobminder-ai-1.0.0.jar
+java -jar target/job-monitoring-system-1.0.0.jar
 ```
 
 ## 📊 How It Works
@@ -348,7 +346,7 @@ job-monitor {
 ```
 src/
 ├── main/
-│   ├── java/com/jobminder/
+│   ├── java/com/jobmonitor/
 │   │   ├── actor/              # Akka actors for system components
 │   │   ├── message/            # Message classes for actor communication
 │   │   ├── model/              # Data models and DTOs
@@ -356,9 +354,11 @@ src/
 │   │   └── Main.java          # Application entry point
 │   └── resources/
 │       ├── application.conf    # Configuration file
-│       └── schema.sql         # Database schema
+│       └── logback.xml        # Logging configuration
 ├── test/                      # Unit tests
-└── scripts/                   # Setup and utility scripts
+├── create_job_monitor_schema.sql  # Database schema creation script
+├── run_job_monitor.sh         # Application runner script
+└── job_monitor_cron           # Cron job configuration
 ```
 
 ## 🧪 Testing
@@ -383,7 +383,7 @@ The system uses SLF4J with Logback for comprehensive logging. Logs are written t
 1. **Database Connection Failed**
    - Ensure MySQL is running and accessible
    - Verify credentials in `application.conf`
-   - Check if the database and user were created successfully
+   - Check if the database and user were created successfully using `create_job_monitor_schema.sql`
 
 2. **Slack Notifications Not Working**
    - Verify Slack bot token and channel ID

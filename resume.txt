@@ -1,0 +1,77 @@
+                                     Jay Vipul Gala
+             (857) 869-8448 | jayvipulgala@gmail.com | linkedin.com/in/jaygala25 | github.com/jaygala25
+
+Technical Skills
+ Languages: Go, Python, JavaScript, TypeScript, Java, SQL
+ Full Stack: React, Node.js, Express.js, FastAPI, Redis, PostgreSQL, MySQL, Sequelize, HTML, CSS
+ DevOps: Linux, Docker, Kubernetes, Terraform, GCP, AWS, GitHub Actions, Jenkins, Grafana, Kafka, Helm, Packer
+
+Experience
+ Software Engineering Intern                                                                  Sep 2024 – Dec 2024
+ Roamr | Fleet Management                                                                                 Boston, MA
+    • Architected event-driven webhook service with Node.js, Redis, and BullMQ to detect abandoned rides across 500+
+
+      vehicle fleet, mitigating revenue loss by 15% through automated ride termination
+    • Engineered React based geofence management tool with Google Maps integration, featuring real-time previews and
+
+      state management for 50+ locations, accelerating setup time by 50%
+    • Revamped React admin dashboard with RBAC, secure password handling, and editable fleet owner profiles
+
+    • Implemented unit and integration testing suite using Chai for walk-away detection, achieving 95% code coverage
+
+
+ Software Development Engineer 2                                                               Oct 2020 – Jul 2023
+ Media.net | Contextual Advertising                                                                       Mumbai, IN
+   • Launched browser extension serving 45,000+ users with searchable electronics manual library powered by Python
+
+      web scraper processing 100K+ documents
+   • Scaled Maps extension to 30,000+ users with 85% retention rate, implementing Azure Maps for location search and
+
+      routing functionality
+   • Streamlined campaign creation workflow by integrating TUNE Network APIs and CSV upload functionality,
+
+      shortening setup time by 66% for 1000+ daily campaigns
+   • Built unified product integration with FastAPI, connecting 3 disparate systems via third-party APIs, eliminating
+
+      75% manual effort for 500+ daily resource creations
+   • Optimized SQL queries and refactored codebase for A/B experiment data retrieval, achieving 80% response time
+
+      improvement and 50% reduction in Flow Pages latency
+   • Mentored 5 junior developers through code reviews and pair programming, accelerating team delivery by 30%
+
+
+
+Projects
+ Cloud-Native Distributed System for Course Feedback Insights | GitHub                        Jan 2025 – Apr 2025
+    • Containerized Go REST APIs with multi-stage Docker builds and automated PostgreSQL migrations using Flyway
+
+    • Deployed Jenkins on AWS, automated with JCasC & Groovy, and built Job DSL pipelines for builds and releases
+
+    • Orchestrated microservices on GKE with Helm; provisioned GCP via Terraform, securing with Istio & Bastion
+
+    • Built Kafka pipeline to process PDFs, store vectors in Pinecone, and power Gemini RAG chatbot for summaries
+
+    • Created Go based custom Kubernetes operator for configurable, automated database backups to GCS bucket
+
+
+ Google Cloud Infrastructure Project | GitHub                                                  Jan 2024 – Apr 2024
+   • Designed Node.js based user registration system with CRUD APIs, leveraging Sequelize ORM for database setup
+
+   • Assembled custom Packer image bundling app, dependencies, and systemd service for server startup on VM boot
+
+   • Automated GCP with Terraform - Cloud SQL, DNS, Logging, Autoscaling, Load Balancing with SSL certificate
+
+   • Developed Pub/Sub triggered serverless Cloud Run function to send verification emails to new users via Mailgun
+
+   • Established GitHub Actions CI/CD for automated builds, tests, and deployments, expediting release time by 40%
+
+
+
+Notable Achievements
+ Smart India Hackathon (Govt. of India) - National Winner: Diagnosis of Acute Diseases in Rural Areas w/ AI (97 teams)
+ International Collegiate Programming Contest (ICPC) Asia Kolkata-Kanpur Onsite Regional Contestant
+
+Education
+ Northeastern University                                                                        Expected Dec 2025
+ Master of Science in Software Engineering Systems                                                        Boston, MA
+

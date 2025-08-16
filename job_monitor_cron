@@ -1,0 +1,3 @@
+# Job Monitoring System - Run every 15 minutes
+# Format: minute hour day month day_of_week command
+*/15 * * * * /Users/jaygala25/Desktop/AI\ Agents\ Infra/Project/run_job_monitor.sh
